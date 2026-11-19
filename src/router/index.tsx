@@ -1,7 +1,6 @@
 import { lazy, Suspense, type ReactNode } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { AdminLayout } from '@/components/layout';
-import { ProtectedRoute } from './ProtectedRoute';
 import { ROUTES } from '@/constants/routes';
 
 const Login = lazy(() => import('@/pages/Login/Login'));
@@ -12,14 +11,10 @@ const withSuspense = (node: ReactNode) => <Suspense fallback={null}>{node}</Susp
 
 export const router = createBrowserRouter([
   { path: ROUTES.LOGIN, element: withSuspense(<Login />) },
+  // TODO: backend ulangandan keyin AdminLayout'ni <ProtectedRoute /> ichiga o'rang
   {
-    element: <ProtectedRoute />,
-    children: [
-      {
-        element: <AdminLayout />,
-        children: [{ path: ROUTES.DASHBOARD, element: withSuspense(<Dashboard />) }],
-      },
-    ],
+    element: <AdminLayout />,
+    children: [{ path: ROUTES.DASHBOARD, element: withSuspense(<Dashboard />) }],
   },
   { path: ROUTES.NOT_FOUND, element: withSuspense(<NotFound />) },
 ]);

@@ -1,8 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
-import { authService } from '@/services/auth.service';
-import { tokenStorage } from '@/utils/storage';
 import { ROUTES } from '@/constants/routes';
 import { Button } from '@/components/ui';
 import styles from './Login.module.scss';
@@ -10,22 +8,12 @@ import styles from './Login.module.scss';
 const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: '', password: '' });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await authService.login(form);
-      tokenStorage.set(data.access_token, data.refresh_token);
-      navigate(ROUTES.DASHBOARD, { replace: true });
-    } catch {
-      setError('Invalid username or password');
-    } finally {
-      setLoading(false);
-    }
+    // TODO: backend ulanganda authService.login(form) chaqirib,
+    // tokenStorage.set(...) bilan tokenni saqlang
+    navigate(ROUTES.DASHBOARD, { replace: true });
   };
 
   return (
@@ -47,8 +35,7 @@ const Login = () => {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
           required
         />
-        {error && <p className={styles.error}>{error}</p>}
-        <Button type="submit" loading={loading} icon={<FiLogIn />}>
+        <Button type="submit" icon={<FiLogIn />}>
           Login
         </Button>
       </form>
