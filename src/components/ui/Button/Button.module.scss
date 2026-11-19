@@ -1,0 +1,38 @@
+@use '@/styles' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: $radius-md;
+  font-weight: 500;
+  transition: background $transition, opacity $transition;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  background: $color-primary;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-hover;
+  }
+}
+
+.secondary {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  color: $color-text;
+}
+
+.danger {
+  background: $color-danger;
+  color: #fff;
+}

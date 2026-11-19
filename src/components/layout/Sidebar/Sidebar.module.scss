@@ -1,0 +1,50 @@
+@use '@/styles' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  flex-shrink: 0;
+  background: $color-sidebar-bg;
+  color: $color-sidebar-text;
+  transition: width $transition;
+  overflow: hidden;
+}
+
+.collapsed {
+  width: $sidebar-collapsed-width;
+}
+
+.logo {
+  @include flex-center;
+  height: $header-height;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: $radius-md;
+  white-space: nowrap;
+  transition: background $transition, color $transition;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+}
+
+.active {
+  background: $color-primary;
+  color: #fff;
+}

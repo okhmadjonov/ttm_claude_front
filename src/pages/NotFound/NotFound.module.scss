@@ -1,0 +1,17 @@
+@use '@/styles' as *;
+
+.wrapper {
+  @include flex-center;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 100%;
+
+  h1 {
+    font-size: 64px;
+    color: $color-primary;
+  }
+
+  a {
+    color: $color-primary;
+  }
+}

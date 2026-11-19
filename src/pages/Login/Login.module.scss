@@ -1,0 +1,41 @@
+@use '@/styles' as *;
+
+.wrapper {
+  @include flex-center;
+  min-height: 100%;
+  padding: 16px;
+}
+
+.card {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 380px;
+  padding: 32px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.input {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  outline: none;
+  transition: border-color $transition;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.error {
+  color: $color-danger;
+  font-size: 13px;
+}

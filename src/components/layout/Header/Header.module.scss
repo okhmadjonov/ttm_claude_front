@@ -1,0 +1,23 @@
+@use '@/styles' as *;
+
+.header {
+  @include flex-between;
+  height: $header-height;
+  padding: 0 24px;
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+}
+
+.iconBtn {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  color: $color-text-muted;
+  transition: background $transition;
+
+  &:hover {
+    background: $color-bg;
+    color: $color-text;
+  }
+}

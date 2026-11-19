@@ -1,0 +1,11 @@
+@use '@/styles' as *;
+
+.page {
+  @include card;
+  padding: 24px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
